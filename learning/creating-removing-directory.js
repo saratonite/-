@@ -23,4 +23,11 @@ fs.exists('files/newdir',function(exist){
     });
   }
 
-})
+});
+
+// Removing files
+fs.exists('files/greetings-write.txt',function(exists){
+  if(exists){
+    fs.unlink('files/greetings-write.txt');
+  }
+});
