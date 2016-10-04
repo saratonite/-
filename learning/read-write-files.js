@@ -17,7 +17,7 @@ fs.readFile(readfilepath,'utf8',function(err,data){
   console.log(data);
 
   /// Write file async
-  fs.writeFile(,data+': Thank you:',function(err){
+  fs.writeFile(writefilepath ,data+': Thank you:',function(err){
 
     console.log(err);
 
