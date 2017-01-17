@@ -1,8 +1,17 @@
 var express = require('express');
+var nunjucks = require('nunjucks')
+
 
 var app = express();
 
+/* Set ejs as template engine */
 app.set('view engine','ejs');
+
+/* Configure nunjucks */
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+});
 
 /* Serve static files */
 app.use('/assets', express.static('public'));
@@ -14,6 +23,11 @@ app.get('/',function(req,res){
 
 app.get('/home',function(req,res){
   res.render('ejs/home',{'message':'Welcome to home page'});
+});
+
+app.get('/nunjucks',function(req,res){
+
+  res.render('nunjucks/home.html');
 });
 
 /* Route params */
