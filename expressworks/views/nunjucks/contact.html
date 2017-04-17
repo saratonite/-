@@ -1,0 +1,15 @@
+{% extends "nunjucks/layout.html" %}
+
+
+{% block right %}
+    <h2>Contact Us</h2>
+    <form class="" action="/contact" method="post">
+      <div><input type="text" placeholder="Name" name="name" value=""></div>
+      <div><input type="text" placeholder="Email" name="email" value=""></div>
+      <div><input type="text" placeholder="Phone" name="phone" value=""></div>
+      <div>
+          <button type="submit" name="button">Submit</button>
+      </div>
+
+    </form>
+{% endblock %}

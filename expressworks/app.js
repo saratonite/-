@@ -16,15 +16,23 @@ nunjucks.configure('views', {
 /* Serve static files */
 app.use('/assets', express.static('public'));
 
-app.get('/',function(req,res){
-  res.sendFile(__dirname+'/views/index.html');
+/* Send Response  as plain text */
 
+app.get('/text',function(req,res){
+  res.send('Hello Whatsup!!! <3');
 });
 
+/* Send Response as html file */
+app.get('/',function(req,res){
+  res.sendFile(__dirname+'/views/index.html');
+});
+
+/* Render Response using EJS Template engine */
 app.get('/home',function(req,res){
   res.render('ejs/home',{'message':'Welcome to home page'});
 });
 
+/* Rende Response using Nunjucks */
 app.get('/nunjucks',function(req,res){
 
   res.render('nunjucks/home.html');
@@ -34,11 +42,20 @@ app.get('/nunjucks',function(req,res){
 app.get('/profile/:name',function(req,res){
   res.send('Hello '+req.params.name);
 });
-app.get('/text',function(req,res){
-  res.send('Hello Whatsup!!! <3');
+
+////////////Form Handling
+/* POST Request */
+app.get('/contact',function(req,res){
+  res.render('nunjucks/contact.html');
 });
 
-app.get('*',function(req,res){
+app.post('/contact',function(req,res){
+  console.log(req.baseUrl);
+  res.send('Contact submitted');
+});
+
+
+app.all('*',function(req,res){
   res.sendFile(__dirname+'/views/404.html');
 });
 
