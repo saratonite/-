@@ -1,3 +1,7 @@
+/**
+ * Node event emitter
+ */
+
 var events = require('events');
 var util = require('util');
 
