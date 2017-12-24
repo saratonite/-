@@ -4,12 +4,20 @@ const app = express()
 
 let port = process.env.PORT || 3000;
 
-app.set('view engine', 'pug')
 app.set('views',path.resolve(__dirname,'__views'))
+app.set('view engine', 'pug')
+
+app.use(express.static(path.join(__dirname,'public')))
 
 app.get('/', (req, res) => {
+  const peoples = [
+    "Sarath",
+    "Yoshi",
+    "Baz"
+  ]
   res.render('home',{
-    title: 'Express Pug Learning App'
+    title: 'Express Pug Learning App',
+    peoples
   })
 })
 
