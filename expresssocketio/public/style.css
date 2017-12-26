@@ -1,0 +1,27 @@
+.container {
+  width: 50%;
+  margin: 10px auto;
+}
+
+#message-area {
+  position: relative;
+}
+.message {
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #efefef;
+  position: relative;
+  border-radius: 3px;
+
+}
+
+.message.me {
+  background-color: #2196F3;
+
+}
+
+input, button {
+  width: 100%;
+  padding: 5px;
+
+}

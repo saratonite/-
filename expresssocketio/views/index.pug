@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title Express Socket.io Example
+    link(rel="stylesheet" href="style.css")
+  body
+    .container 
+
+      h1  Realtime Messaging
+      #message-area
+        
+      #type-area
+        .textbox(style="width:70%;float:left;")
+          input(type="text" name="message" id="msgInput")
+        .sendbutton(style="width:30%; float: left;")
+          button(type="button" id="msgSend") SEND
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
+    script(src="client.js")
