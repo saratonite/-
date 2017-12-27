@@ -1,4 +1,4 @@
-module.exports = function authGaurd(req, res, next) {
+module.exports = (req, res, next) => {
   if( req.session.user) {
     next(); return;
   }
