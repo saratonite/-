@@ -2,5 +2,5 @@
 
 ### TODOs
 + [x] File Store
-+ [ ] Flash Messages
++ [x] Flash Messages
 + [ ] MongoDB Store

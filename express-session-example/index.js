@@ -4,6 +4,7 @@ const session = require('express-session')
 const http = require('http')
 const bodyParser = require('body-parser')
 const sessionFileStore = require('session-file-store')
+const flash = require('connect-flash')
 
 const app = express()
 const server = http.createServer(app)
@@ -24,18 +25,28 @@ const fileStore = sessionFileStore(session);
 
 app.use(session({
   store: new fileStore({
-    path : path.join(__dirname, '__session')
+    path : path.join(__dirname, '__session'),
+    retries :15
   }),
   secret: 'secret-key',
-  cookie: { maxAge: 10*1000}
+  cookie: { maxAge: 10*1000},
+  resave: false,
+  saveUninitialized: true
 }))
 
+app.use(flash())
 
+// Setting Locals
+
+app.use((req, res, next) => {
+
+  res.locals.flashes = req.flash();
+  next();
+})
 
 app.get('/', (req, res) => {
 
   const user = req.session.user || null;
-
   res.render('index', { user })
 
 })
@@ -49,6 +60,9 @@ app.get('/login', guest, (req, res) => {
 })
 
 
+
+
+
 app.post('/login', guest, (req, res) => {
   /* Dummy login */
 
@@ -58,10 +72,12 @@ app.post('/login', guest, (req, res) => {
 
   if( user =="sarath" && password=="sarath") {
     req.session.user = user;
+    req.flash('info','Great, Successfully loged in')
     res.redirect('profile')
   }
   else {
     // Flash Error Message
+    req.flash('danger','Invalid login details')
     res.redirect('/login')
   }
 })
@@ -69,6 +85,7 @@ app.post('/login', guest, (req, res) => {
 app.get('/logout', (req, res) => {
   req.session.destroy(() => {
     //Set Flash message
+    //req.flash('info','Successfully loged out!!!')
     res.redirect('/')
   })
 })
