@@ -1,5 +1,5 @@
 # TODOS
-+ [ ] Mongoose connection
++ [x] Mongoose connection
 + [ ] Schemas / Model
 + [ ] Query
 + [ ] Hooks
