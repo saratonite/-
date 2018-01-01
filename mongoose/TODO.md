@@ -1,7 +1,8 @@
 # TODOS
 + [x] Mongoose connection
-+ [ ] Schemas / Model
-+ [ ] Query
-+ [ ] Hooks
++ [x] Schemas / Model
++ [ ] Validation messages
++ [ ] Queries [CREATE / READ / UPDATE / DELETE ]
++ [ ] Mongoose Hooks
 + [ ] Aggregations
 + [ ] Multiple Queries
