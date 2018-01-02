@@ -2,7 +2,8 @@
 + [x] Mongoose connection
 + [x] Schemas / Model
 + [ ] Validation messages
-+ [ ] Queries [CREATE / READ / UPDATE / DELETE ]
++ [ ] CRUD [CREATE / READ / UPDATE / DELETE ]
++ [ ] Queries ( where, exec)
 + [ ] Mongoose Hooks
 + [ ] Aggregations
 + [ ] Multiple Queries
