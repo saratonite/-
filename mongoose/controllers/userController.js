@@ -43,3 +43,31 @@ exports.getUser = (req, res) => {
     res.json({message: 'Some error'})
   })
 }
+
+/* Update user */
+exports.updateUser = (req, res) => {
+  let  name = req.params.name;
+  User.update({ name: name }, req.body )
+    .then((q)=> {
+      console.log(q)
+      res.json({ message: 'User updated'})
+    })
+    .catch((error) => {
+      res.json({ message: 'User updation failed'})
+    })
+
+}
+
+/* Delete user */
+exports.deleteUser = (req, res) => {
+  let name = req.params.name;
+  User.find({ name: name}).remove()
+    .then((q) => {
+      console.log(q)
+      res.send({message:'User deleted'})
+    })
+    .catch((error) => {
+      res.send({message:'Error deleting user'})
+    })
+
+}
