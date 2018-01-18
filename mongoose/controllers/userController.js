@@ -3,9 +3,11 @@ const User = require('../models/User')
 /*
 List all user
 */
-exports.userIndex = (req, res) => {
+exports.userIndex = async (req, res) => {
 
-  User.find({}).then((data) => res.json(data))
+  var users =  await User.find({})
+  res.json(users);
+
 }
 /*
 Create new user
