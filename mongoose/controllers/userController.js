@@ -12,64 +12,45 @@ exports.userIndex = async (req, res) => {
 /*
 Create new user
 */
-exports.createUser = (req, res) => {
-
+exports.createUser = async (req, res) => {
   const user = new User(req.body)
-
-  user.save().then(newUser => {
-    res.json(newUser)
-  })
-  .catch(error => {
-    console.log(error)
-    res.json({message: 'Some error!'})
-  })
+  const newUser = await user.save();
+  res.json(newUser);
 }
 
 /*
 get single user
 */
 
-exports.getUser = (req, res) => {
+exports.getUser = async(req, res) => {
 
   const name = req.params.name;
 
-  User.findOne({name: name})
-    .then(user => {
-      if(! user) {
-        res.status(404).json({message: 'Resource not found'})
-        return;
-      }
-      res.json(user)
-  })
-  .catch(err => {
-    res.json({message: 'Some error'})
-  })
+  const user = await User.findOne({name: name})
+  if(!user) {
+    res.status(404).json({message: 'Resource not found'})
+  }
+  else {
+    res.json(user);
+  }
+
 }
 
 /* Update user */
-exports.updateUser = (req, res) => {
+exports.updateUser = async (req, res) => {
   let  name = req.params.name;
-  User.update({ name: name }, req.body )
-    .then((q)=> {
-      console.log(q)
-      res.json({ message: 'User updated'})
-    })
-    .catch((error) => {
-      res.json({ message: 'User updation failed'})
-    })
+  const dbRes = await User.update({ name: name }, req.body )
+  res.json({message: ` ${dbRes.n} User updated`})
+
+
 
 }
 
 /* Delete user */
-exports.deleteUser = (req, res) => {
+exports.deleteUser = async (req, res) => {
   let name = req.params.name;
-  User.find({ name: name}).remove()
-    .then((q) => {
-      console.log(q)
-      res.send({message:'User deleted'})
-    })
-    .catch((error) => {
-      res.send({message:'Error deleting user'})
-    })
+  const dbRes = await User.find({ name: name}).remove()
+  res.json({message: ` ${dbRes.n} Records deleted`})
+
 
 }
