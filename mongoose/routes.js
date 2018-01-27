@@ -1,5 +1,5 @@
 const Router = require('express').Router;
-const errorHandler = require('./halders/errorHandlers')
+const errorHandler = require('./handlers/errorHandlers')
 const userController = require('./controllers/userController')
 const routes = Router();
 
