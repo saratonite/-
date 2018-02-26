@@ -48,17 +48,30 @@ stream.on('tweet', function (tweet) {
 
 
 
-const searchTerm = process.argv[2] || 'news';
-const searchCount =  process.argv[3]|| 5;
+// const searchTerm = process.argv[2] || 'news';
+// const searchCount =  process.argv[3]|| 5;
 
 
-T.get('search/tweets', { q: `${searchTerm} lang:en`, count: searchCount }, function(err, data, response) {
+// T.get('search/tweets', { q: `${searchTerm} lang:en`, count: searchCount }, function(err, data, response) {
 
-    if(data.statuses && data.statuses.length) {
-        data.statuses.map((tweet) => {
-            //console.log(Object.keys(tweet))
-            console.log('⚡ ▶ ',tweet.text) 
-        })
+//     if(data.statuses && data.statuses.length) {
+//         data.statuses.map((tweet) => {
+//             //console.log(Object.keys(tweet))
+//             console.log('⚡ ▶ ',tweet.text) 
+//         })
 
+//     }
+// })
+
+// Post Status
+
+const statusText = process.argv[2] || 'Bot ⚡';
+
+
+T.post(
+    'statuses/update',
+    { status: statusText },
+    (err, data, response) => {
+      console.log(err, data, response);
     }
-})
+  )
