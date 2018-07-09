@@ -1,16 +1,21 @@
+//- Extending base layout
 extends layout
+//- Adding content to block
 block content
+  //- Including Mixin
   include ./mixins/hello
   .home-content This is home page content
     h1 Peoples
     each people in peoples
       p.list-item=people
+  //- Multiline Text
   .multiline-text.
     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae numquam quasi illum explicabo eos nulla, eum quibusdam aliquid harum vel facilis, corrupti beatae! Tempore magnam officiis tempora dignissimos repellat!
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eos, animi quos illum quod necessitatibus odio quisquam ullam assumenda nulla dolor soluta ut inventore eveniet, dolorem placeat voluptatum. Minima, facere.
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis aliquam quod ipsam ut quidem. Corrupti illo, quidem recusandae, nulla enim ipsam sequi sapiente dolores reprehenderit labore delectus neque? Omnis, reprehenderit.
+  //- Appling Mixin
   +hello('World')
-
+  //- Infile Script tag
   script.
     console.log('Hey pug')
     console.log('___________________')

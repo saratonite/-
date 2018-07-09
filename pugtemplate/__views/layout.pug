@@ -1,13 +1,19 @@
+//- This is a pug file (comment)
 doctype html
-html(lang="en")
+
+//- Attributes
+html(lang="en") 
   head
+    //- Render variables
     title=title
     link(rel="stylesheet" href="css/style.css")
   body
     .container
       include partials/header
+      //- Layout blocks
       block content
         h1 Hey this is the content area
+    //- Partial views 
     include partials/case
     include partials/loops
     footer
